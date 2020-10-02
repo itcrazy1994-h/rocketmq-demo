@@ -24,11 +24,11 @@ public class MQConsumeMsgListenerProcessor  implements MessageListenerConcurrent
         MessageExt messageExt = msgList.get(0);
         log.info("MQ接收到的消息为：" + messageExt.toString());
         //重试次数
-        int reconsume =  messageExt.getReconsumeTimes();
+       // int reconsume =  messageExt.getReconsumeTimes();
         try {
             String topic = messageExt.getTopic();
             String tags = messageExt.getTags();
-            //一般设置全局唯一id 做重复消费凭证判断 
+            //一般设置全局唯一id 做重复消费凭证判断
             String keys =  messageExt.getKeys();
             String body = new String(messageExt.getBody(), "utf-8");
 
