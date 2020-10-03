@@ -11,6 +11,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import java.util.List;
 @Slf4j
 public class MQProducerController {
     private static  final String TOPIC_NAME="test_topic_user";
+
 
     DefaultMQProducer defaultMQProducer;
 
@@ -93,6 +95,7 @@ public class MQProducerController {
    }
 
     @Autowired
+    @Qualifier("defaultProducer")
     public void setDefaultMQProducer(DefaultMQProducer defaultMQProducer) {
         this.defaultMQProducer = defaultMQProducer;
     }

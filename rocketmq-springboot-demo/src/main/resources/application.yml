@@ -18,4 +18,9 @@ rocketmq:
     sendMsgTimeOut: 3000
     #  发送消息失败重试次数，默认2
     retryTimesWhenSendFailed: 2
+    # 关闭分布式事务
+    isOffTransaction: true
+    # 分布式生产组
+    transactionGroupName: 'tra_group_producer'
+
 

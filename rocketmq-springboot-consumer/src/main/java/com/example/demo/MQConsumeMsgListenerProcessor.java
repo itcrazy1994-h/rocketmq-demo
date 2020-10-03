@@ -24,7 +24,7 @@ public class MQConsumeMsgListenerProcessor  implements MessageListenerConcurrent
         MessageExt messageExt = msgList.get(0);
         log.info("MQ接收到的消息为：" + messageExt.toString());
         //重试次数
-       // int reconsume =  messageExt.getReconsumeTimes();
+        int reconsume =  messageExt.getReconsumeTimes();
         try {
             String topic = messageExt.getTopic();
             String tags = messageExt.getTags();
@@ -32,7 +32,7 @@ public class MQConsumeMsgListenerProcessor  implements MessageListenerConcurrent
             String keys =  messageExt.getKeys();
             String body = new String(messageExt.getBody(), "utf-8");
 
-            log.info("MQ消息topic={}, tags={}, 消息内容={} , 消费唯一Id", topic,tags,body,keys);
+            log.info("MQ消息topic={}, tags={}, 消息内容={} ,keys:{} ,消费唯一Id {}", topic,tags,body,keys, messageExt.getTransactionId());
         } catch (Exception e) {
             log.error("获取MQ消息内容异常{}",e);
             return ConsumeConcurrentlyStatus.RECONSUME_LATER;
